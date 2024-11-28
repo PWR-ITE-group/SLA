@@ -1,5 +1,5 @@
 # Textual reports
-class ReportGenerator:
+class ReportGenerator: # TODO: consider doing reports to a txt file, maybe multiple simulations and as a result avarage stats to report
     @staticmethod
     def generate_text_report(logs, breaches):
         """Generate a textual summary of the simulation."""

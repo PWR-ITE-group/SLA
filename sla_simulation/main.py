@@ -6,7 +6,7 @@ from reports.report_generator import ReportGenerator
 from reports.visualizer import Visualizer
 
 # 1. Create SLA contract
-contract = SLAContract(
+contract = SLAContract( # TODO: verify if all the data needed for SLA is here
     provider="Provider A",
     client="Client B",
     start_date="2024-11-01",

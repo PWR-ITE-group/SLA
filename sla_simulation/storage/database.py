@@ -1,6 +1,6 @@
 import sqlite3
 
-class Database:
+class Database: # TODO: verify if we really need the db
     def __init__(self, db_name="sla_logs.db"):
         self.connection = sqlite3.connect(db_name)
         self.create_tables()

@@ -1,5 +1,5 @@
 from datetime import datetime
-
+# TODO: add input from txt file
 class SLAContract:
     def __init__(self, provider, client, start_date, end_date, uptime_threshold, response_time_threshold, penalties):
         self.provider = provider
