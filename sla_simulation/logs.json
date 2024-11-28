@@ -1,0 +1,44 @@
+[
+    {
+        "timestamp": "2024-11-28T19:40:05.164586",
+        "uptime": 96.7559230835744,
+        "response_time": 43,
+        "breach": true
+    },
+    {
+        "timestamp": "2024-11-28T19:40:05.164586",
+        "uptime": 96.40399095456486,
+        "response_time": 14,
+        "breach": true
+    },
+    {
+        "timestamp": "2024-11-28T19:40:05.164586",
+        "uptime": 97.5861173903345,
+        "response_time": 48,
+        "breach": true
+    },
+    {
+        "timestamp": "2024-11-28T19:40:05.164586",
+        "uptime": 98.38660269436502,
+        "response_time": 36,
+        "breach": true
+    },
+    {
+        "timestamp": "2024-11-28T19:40:05.164586",
+        "uptime": 98.24501406437413,
+        "response_time": 45,
+        "breach": true
+    },
+    {
+        "timestamp": "2024-11-28T19:40:05.164586",
+        "uptime": 98.54110659551658,
+        "response_time": 8,
+        "breach": true
+    },
+    {
+        "timestamp": "2024-11-28T19:40:05.164586",
+        "uptime": 97.00238801352165,
+        "response_time": 1,
+        "breach": true
+    }
+]
