@@ -1,44 +1,44 @@
 [
     {
-        "timestamp": "2024-11-28T19:40:05.164586",
-        "uptime": 96.7559230835744,
-        "response_time": 43,
+        "timestamp": "2024-11-01T00:00:00",
+        "uptime": 95.33495996761725,
+        "response_time": 10,
         "breach": true
     },
     {
-        "timestamp": "2024-11-28T19:40:05.164586",
-        "uptime": 96.40399095456486,
-        "response_time": 14,
+        "timestamp": "2024-11-02T00:00:00",
+        "uptime": 98.70936633283063,
+        "response_time": 2,
         "breach": true
     },
     {
-        "timestamp": "2024-11-28T19:40:05.164586",
-        "uptime": 97.5861173903345,
-        "response_time": 48,
+        "timestamp": "2024-11-03T00:00:00",
+        "uptime": 98.74099145248705,
+        "response_time": 28,
         "breach": true
     },
     {
-        "timestamp": "2024-11-28T19:40:05.164586",
-        "uptime": 98.38660269436502,
-        "response_time": 36,
+        "timestamp": "2024-11-04T00:00:00",
+        "uptime": 98.45656488125233,
+        "response_time": 24,
         "breach": true
     },
     {
-        "timestamp": "2024-11-28T19:40:05.164586",
-        "uptime": 98.24501406437413,
-        "response_time": 45,
+        "timestamp": "2024-11-05T00:00:00",
+        "uptime": 96.75696352258464,
+        "response_time": 18,
         "breach": true
     },
     {
-        "timestamp": "2024-11-28T19:40:05.164586",
-        "uptime": 98.54110659551658,
-        "response_time": 8,
+        "timestamp": "2024-11-06T00:00:00",
+        "uptime": 98.12049102044568,
+        "response_time": 12,
         "breach": true
     },
     {
-        "timestamp": "2024-11-28T19:40:05.164586",
-        "uptime": 97.00238801352165,
-        "response_time": 1,
+        "timestamp": "2024-11-07T00:00:00",
+        "uptime": 97.2252759647935,
+        "response_time": 15,
         "breach": true
     }
 ]
