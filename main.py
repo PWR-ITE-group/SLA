@@ -1,37 +1,47 @@
-from sla_contract.contract import SLAContract
-from simulation.engine import SimulationEngine
-from simulation.breach_checker import BreachChecker
-from storage.logger import LogStorage
-from reports.report_generator import ReportGenerator
-from reports.visualizer import Visualizer
+from sla_simulation.contracts import SLAContract
+from sla_simulation.metrics import MetricsCalculator
+from sla_simulation.simulation import SimulationEngine
+from sla_simulation.visualizer import Visualizer
 
-# 1. Create SLA contract
-contract = SLAContract( # TODO: verify if all the data needed for SLA is here
-    provider="Provider A",
-    client="Client B",
-    start_date="2024-11-01",
-    end_date="2024-11-07",
-    uptime_threshold=99.9,
-    response_time_threshold=24,
-    penalties=500
-)
-contract.validate_contract()
+def group_logs_by_month(logs, days_in_month=30):
+    """
+    Группирует логи по месяцам, суммируя поломки и простои.
+    """
+    monthly_logs = []
+    for month in range(0, len(logs), days_in_month):
+        monthly_failures = sum(log['failures'] for log in logs[month:month + days_in_month])
+        monthly_downtime = sum(log['downtime'] for log in logs[month:month + days_in_month])
+        monthly_logs.append({'month': (month // days_in_month) + 1,
+                             'failures': monthly_failures,
+                             'downtime': monthly_downtime})
+    return monthly_logs
 
-# 2. Run simulation
-engine = SimulationEngine(contract)
-engine.run_simulation()
-logs = engine.get_logs()
+if __name__ == "__main__":
+    # Создаем SLA-контракты
+    premium_sla = SLAContract("Premium", num_servers=5, disk_quality="High", availability_target=99.9,
+                              max_failure_time=1, max_failures=2, daily_cost=200, penalty_cost=500)
 
-# 3. Detect breaches
-breaches = BreachChecker.detect_breaches(logs)
-total_penalty = BreachChecker.calculate_penalty(breaches, contract.penalties)
+    # Выводим информацию о контракте
+    premium_sla.display_info()
 
-# 4. Save logs
-LogStorage.save_logs_to_json(logs)
+    # Симулируем работу для SLA
+    duration = 360  # 360 дней
+    engine = SimulationEngine(premium_sla, duration)
+    engine.simulate_failures()
 
-# 5. Generate report
-report = ReportGenerator.generate_text_report(logs, breaches)
-print("Simulation Report:", report)
+    # Получаем логи и рассчитываем метрики
+    logs = engine.get_logs()
+    print("Metrics for Premium SLA:")
+    print(f"  Mean Time to Repair (MTTR): {MetricsCalculator.calculate_mttr(logs):.2f} hours")
+    print(f"  Mean Time Between Failures (MTBF): {MetricsCalculator.calculate_mtbf(logs, duration):.2f} days")
+    print(f"  Average Downtime: {MetricsCalculator.calculate_average_downtime(logs):.2f} hours/day")
+    print(f"  Total Failures: {MetricsCalculator.calculate_total_failures(logs)}")
 
-# 6. Visualize logs
-Visualizer.plot_uptime_over_time(logs)
+    # Визуализация данных
+    total_time = duration * 24  # Общее количество часов за весь период
+    Visualizer.plot_histogram_of_availability(logs, total_time)
+    Visualizer.plot_daily_downtime(logs)
+
+    # Группируем логи по месяцам и строим график
+    monthly_logs = group_logs_by_month(logs)
+    Visualizer.plot_total_failures(monthly_logs, title="Total Failures per Month", x_label="Months")
