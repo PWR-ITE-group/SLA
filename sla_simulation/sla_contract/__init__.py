@@ -1,1 +1,0 @@
-# Package for contract-related functionality
